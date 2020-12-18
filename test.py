@@ -10,3 +10,4 @@ pixels[0] = (255, 0, 0)
 print(dir(board))
 
 
+
