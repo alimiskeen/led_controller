@@ -5,6 +5,6 @@ import board
 
 # pixels = neopixel.NeoPixel(board.)
 
-print(board)
+print(dir(board))
 
 
