@@ -7,12 +7,12 @@ import time
 # global values
 ORDER = neopixel.GRB
 pixel_pin = board.D18
-num_pixels = (150*18) + 18
+num_pixels = (150*18) + 10
 
 
 def delegate_format(self: neopixel.NeoPixel, input_list: list) -> None:
     item = input_list[0]
-    self.fill((255, 0, 0))
+    self.fill((100, 10, 50))
 
 
 def xy_to_index(x: int, y: int) -> int:
@@ -62,6 +62,7 @@ class Screen:
 
             self.pixels.show()  # TODO: try to maybe use a delegate per frame instead of a delegate per led
             time.sleep(33 / 1000)  # TODO: fix the timing, from rigid to remaining time to next frame
+            print('drawn')
 
     def main_loop(self):
         thr = threading.Thread(target=self._draw)
@@ -70,5 +71,5 @@ class Screen:
 
 if __name__ == '__main__':
     print("starting threaded pixel display")
-    screen = Screen((150 * 19) + 10)
+    screen = Screen(num_pixels)
     screen.main_loop()
