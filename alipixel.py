@@ -51,11 +51,14 @@ class AliPixel(neopixel.NeoPixel):
                 for x in range(150):
                     super()[xy_to_index(x, y)] = self.drawing_method(x, y, self.drawing_variable)
             super().show()  # TODO: try to maybe use a delegate per frame instead of a delegate per led
-            time.sleep(33/1000)  # TODO: fix the timing, from rigid to remaining time to next frame
+            time.sleep(33 / 1000)  # TODO: fix the timing, from rigid to remaining time to next frame
 
     def main_loop(self):
         thr = threading.Thread(target=self._draw)
         thr.start()
 
+
 if __name__ == '__main__':
     print("starting threaded pixel display")
+    screen = AliPixel()
+    screen.main_loop()
