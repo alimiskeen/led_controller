@@ -11,7 +11,7 @@ num_pixels = (150 * 18)
 
 
 def delegate_format(pixel: neopixel.NeoPixel, input_item: any) -> None:
-    item = input_list[0]
+    item = input_item[0]
     pixel.fill((100, 100, 100))
 
 
@@ -75,7 +75,7 @@ class Screen:
 
 if __name__ == '__main__':
     # something
-    print("starting threaded pixel display")
-    col = colorify.Color(255, 50, 120)
+    print("display has started, CTRL C to stop")
+    col = colorify.Color(255, 10, 10)
     screen = Screen(num_pixels, pixel_pin, drawing_method=color_wheel, drawing_variable=col)
     screen.main_loop()
