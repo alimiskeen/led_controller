@@ -68,6 +68,7 @@ class Screen:
 
 
 if __name__ == '__main__':
+    # something
     print("starting threaded pixel display")
     screen = Screen(num_pixels, pixel_pin, drawing_method=lightup_desk)
     screen.main_loop()
