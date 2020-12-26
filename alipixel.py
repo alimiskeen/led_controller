@@ -25,6 +25,7 @@ def lightup_desk(self: neopixel.NeoPixel, input_list: list) -> None:
     for y in range(18):
         for x in range(150):
             if eclipse_equation(x, y):
+                print("in eclipse")
                 self[xy_to_index(x, y)] = (100, 100, 100)
 
 
@@ -57,7 +58,6 @@ class Screen:
             self.pixels.drawing_method(self.drawing_variable)
             self.pixels.show()  # TODO: try to maybe use a delegate per frame instead of a delegate per led
             # time.sleep(33 / 1000)  # TODO: fix the timing, from rigid to remaining time to next frame
-            print('drawn')
 
     def main_loop(self):
         thr = threading.Thread(target=self._draw)
