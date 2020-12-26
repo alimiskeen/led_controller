@@ -52,10 +52,10 @@ def xy_to_index(x: int, y: int) -> int:
 
 class Screen:
 
-    def __init__(self, num_of_pixels, pin, drawing_method=delegate_format, drawing_variable=None):
+    def __init__(self, num_of_pixels, pin, drawing_method=delegate_format, drawing_variable=None, brightness=0.5):
         if drawing_variable is None:
             drawing_variable = [0]
-        self.pixels = neopixel.NeoPixel(pin, num_of_pixels, auto_write=False)
+        self.pixels = neopixel.NeoPixel(pin, num_of_pixels, auto_write=False, brightness=brightness)
         self.drawing_method = drawing_method
         self.drawing_variable = drawing_variable
 
