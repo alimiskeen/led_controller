@@ -47,6 +47,8 @@ class Color:
 
     def change_hue(self, hue):
         self._Hue = self._Hue + math.radians(hue)
+        if self._Hue > 2*math.pi:
+            self._Hue = 0
         self._Red, self._Green, self._Blue = colorsys.hsv_to_rgb(self._Hue, self._Saturation, self._Value)
         self._Red = int(self._Red)
         self._Green = int(self._Green)
