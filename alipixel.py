@@ -20,7 +20,7 @@ def xy_to_index(x: int, y: int) -> int:
     return index
 
 
-def basic_color_wheel(x: int, y: int, inputs: tuple) -> tuple:
+def basic_color_wheel(x: int, y: int, inputs: list) -> tuple:
     if inputs[0] < 10000:
         inputs[0] += 1
         return 255, 0, 0
@@ -37,7 +37,7 @@ def basic_color_wheel(x: int, y: int, inputs: tuple) -> tuple:
 
 class AliPixel(neopixel.NeoPixel):
 
-    def __init__(self, drawing_method=basic_color_wheel, drawing_variable=(0,)):
+    def __init__(self, drawing_method=basic_color_wheel, drawing_variable=[0]):
         super().__init__(board.D18, (150 * 18 + 10), auto_write=False)
         self.drawing_method = drawing_method
         self.drawing_variable = drawing_variable
