@@ -35,10 +35,10 @@ def basic_color_wheel(x: int, y: int, inputs: list) -> tuple:
         return 255, 0, 0
 
 
-class AliPixel(neopixel.NeoPixel):
+class AliPixel:
 
     def __init__(self, drawing_method=basic_color_wheel, drawing_variable=[0]):
-        super().__init__(board.D18, (150 * 18 + 10), auto_write=False)
+        self.pixels = neopixel.NeoPixel(board.D18, (150 * 18 + 10), auto_write=False)
         self.drawing_method = drawing_method
         self.drawing_variable = drawing_variable
 
@@ -49,8 +49,8 @@ class AliPixel(neopixel.NeoPixel):
         while True:  # TODO: implement timing for frame drawing
             for y in range(19):
                 for x in range(150):
-                    super()[xy_to_index(x, y)] = self.drawing_method(x, y, self.drawing_variable)
-            super().show()  # TODO: try to maybe use a delegate per frame instead of a delegate per led
+                    self.pixels[xy_to_index(x, y)] = self.drawing_method(x, y, self.drawing_variable)
+            self.pixels.show()  # TODO: try to maybe use a delegate per frame instead of a delegate per led
             time.sleep(33 / 1000)  # TODO: fix the timing, from rigid to remaining time to next frame
 
     def main_loop(self):
