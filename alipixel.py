@@ -3,6 +3,7 @@ import board
 import neopixel
 import threading
 import colorify
+import time
 
 # global values
 ORDER = neopixel.GRB
@@ -35,6 +36,12 @@ def lightup_desk(pixel: neopixel.NeoPixel, input_item: None) -> None:
                 pixel[xy_to_index(x, y)] = (100, 100, 100)
 
 
+def test_position(pixel: neopixel.NeoPixel, input_item: None) -> None:
+    positions = [(pos_x, pos_y) for pos_x in [0, 75] for pos_y in range(19)]
+    for x, y in positions:
+        pixel[xy_to_index(x, y)] = (255, 255, 255)
+
+
 def xy_to_index(x: int, y: int) -> int:
     """
 
@@ -46,7 +53,10 @@ def xy_to_index(x: int, y: int) -> int:
     if x < 0 or y < 0:
         raise ValueError("cannot have a negative input")
     index = y * 150
-    index += x + 1
+    if y % 2 == 0:
+        index += x + 1
+    else:
+        index += (150 - x) + 1
     return index
 
 
@@ -77,5 +87,6 @@ if __name__ == '__main__':
     # something
     print("display has started, CTRL C to stop")
     col = colorify.Color(255, 10, 10)
-    screen = Screen(num_pixels, pixel_pin, drawing_method=color_wheel, drawing_variable=col)
+    # screen = Screen(num_pixels, pixel_pin, drawing_method=color_wheel, drawing_variable=col)
+    screen = Screen(num_pixels, pixel_pin, drawing_method=test_position)
     screen.main_loop()
