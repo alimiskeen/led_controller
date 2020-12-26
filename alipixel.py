@@ -2,7 +2,7 @@
 import board
 import neopixel
 import threading
-import time
+import colorify
 
 # global values
 ORDER = neopixel.GRB
@@ -10,9 +10,15 @@ pixel_pin = board.D18
 num_pixels = (150 * 18)
 
 
-def delegate_format(pixel: neopixel.NeoPixel, input_list: list) -> None:
+def delegate_format(pixel: neopixel.NeoPixel, input_item: any) -> None:
     item = input_list[0]
     pixel.fill((100, 100, 100))
+
+
+def color_wheel(pixel: neopixel.NeoPixel, input_item: colorify.Color) -> None:
+    c = input_item
+    pixel.fill(c.get_rgb())
+    c.change_hue(5)
 
 
 def eclipse_equation(x: int, y: int) -> bool:
@@ -21,7 +27,7 @@ def eclipse_equation(x: int, y: int) -> bool:
     return (left + right) < 1
 
 
-def lightup_desk(pixel: neopixel.NeoPixel, input_list: list) -> None:
+def lightup_desk(pixel: neopixel.NeoPixel, input_item: None) -> None:
     for y in range(18):
         for x in range(150):
             if eclipse_equation(x, y):
@@ -70,5 +76,6 @@ class Screen:
 if __name__ == '__main__':
     # something
     print("starting threaded pixel display")
-    screen = Screen(num_pixels, pixel_pin, drawing_method=lightup_desk)
+    col = colorify.Color(255, 50, 120)
+    screen = Screen(num_pixels, pixel_pin, drawing_method=color_wheel, drawing_variable=col)
     screen.main_loop()

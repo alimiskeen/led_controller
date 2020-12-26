@@ -59,8 +59,10 @@ class Color:
         return f'({self._Red},{self._Blue},{self._Green}) or ({self._Hue},{self._Saturation},{self._Value})'
 
 
-c = Color(255, 50, 120)
-print(c)
-c.change_hue(180)
-print(c)
+if __name__ == '__main__':
+
+    c = Color(255, 50, 120)
+    print(c)
+    c.change_hue(180)
+    print(c)
 
