@@ -37,7 +37,7 @@ def lightup_desk(pixel: neopixel.NeoPixel, input_item: None) -> None:
 
 
 def test_position(pixel: neopixel.NeoPixel, input_item: None) -> None:
-    positions = [(pos_x, pos_y) for pos_x in [0, 75] for pos_y in range(19)]
+    positions = [(pos_x, pos_y) for pos_x in [0, 75] for pos_y in range(18)]
     for x, y in positions:
         pixel[xy_to_index(x, y)] = (255, 255, 255)
 
@@ -51,7 +51,7 @@ def xy_to_index(x: int, y: int) -> int:
     :raises ValueError: when one of the inputs is negative
     """
     if x < 0 or y < 0:
-        raise ValueError("cannot have a negative input")
+        raise IndexError("cannot have a negative input")
     index = y * 150
     if y % 2 == 0:
         index += x + 1

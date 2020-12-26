@@ -68,3 +68,27 @@ if __name__ == '__main__':
     c.change_hue(180)
     print(c)
 
+    def test_position(pixel: None, input_item: None) -> None:
+        positions = [(pos_x, pos_y) for pos_x in [0, 75] for pos_y in range(19)]
+        for x, y in positions:
+            print(f'x: {x}, y: {y}, index: {xy_to_index(x,y)}')
+
+
+    def xy_to_index(x: int, y: int) -> int:
+        """
+
+        :param x: position of the led in the x direction
+        :param y: position of the led in the y direction
+        :return: the index of the led in the neopixel object
+        :raises ValueError: when one of the inputs is negative
+        """
+        if x < 0 or y < 0:
+            raise IndexError("cannot have a negative input")
+        index = y * 150
+        if y % 2 == 0:
+            index += x + 1
+        else:
+            index += (150 - x) + 1
+        return index
+
+    test_position(1,1)
