@@ -69,7 +69,7 @@ if __name__ == '__main__':
     print(c)
 
     def test_position(pixel: None, input_item: None) -> None:
-        positions = [(pos_x, pos_y) for pos_x in [0, 75] for pos_y in range(19)]
+        positions = [(pos_x, pos_y) for pos_x in [0, 75] for pos_y in range(18)]
         for x, y in positions:
             print(f'x: {x}, y: {y}, index: {xy_to_index(x,y)}')
 

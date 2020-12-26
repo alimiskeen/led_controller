@@ -54,9 +54,9 @@ def xy_to_index(x: int, y: int) -> int:
         raise IndexError("cannot have a negative input")
     index = y * 150
     if y % 2 == 0:
-        index += x + 1
+        index += x
     else:
-        index += (150 - x) + 1
+        index += (150 - x)
     return index
 
 
