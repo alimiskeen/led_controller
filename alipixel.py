@@ -86,7 +86,7 @@ class Screen:
 if __name__ == '__main__':
     # something
     print("display has started, CTRL C to stop")
-    col = colorify.Color(255, 10, 10)
-    # screen = Screen(num_pixels, pixel_pin, drawing_method=color_wheel, drawing_variable=col)
-    screen = Screen(num_pixels, pixel_pin, drawing_method=test_position)
+    col = colorify.Color(255, 0, 0)
+    screen = Screen(num_pixels, pixel_pin, drawing_method=color_wheel, drawing_variable=col)
+    # screen = Screen(num_pixels, pixel_pin, drawing_method=test_position)
     screen.main_loop()
